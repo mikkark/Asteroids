@@ -1,10 +1,9 @@
 {
-  "name": "WebStormTest",
-  "version": "0.0.0",
+  "name": "Asteroids clone",
+  "version": "0.0.1",
   "authors": [
     "mikkark <mikkark@gmail.com>"
   ],
-  "description": "test project",
   "main": "index.html",
   "license": "MIT",
   "dependencies": {

@@ -6,14 +6,13 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>A slicks'n'slide clone</title>
+        <title>An asteroids clone</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="css/normalize.css">
         <link rel="stylesheet" href="css/main.css">
         <script src="js/vendor/jquery-1.10.2.min.js"></script>
         <script src="js/vendor/modernizr-2.6.2.min.js"></script>
-        <script src="js/model.js"></script>
         <script src="rxjs/dist/rx.all.js"></script>
         <script src="angular/angular.js"></script>
         <script src="angular-rx/dist/rx.angular.js"></script>
@@ -26,53 +25,28 @@
             var htmlLoaded = function () { };
 
         </script>
+        <script src="js/model.js"></script>
         <script src="js/app.js"></script>
         <script src="js/services.js"></script>
         <script src="js/helpers.js"></script>
         <script src="js/controllers.js"></script>
         <script src="js/directives.js"></script>
-        <script src="/socket.io/socket.io.js"></script>
-        <script type="text/javascript">
-
-        </script>
     </head>
     <body ng-app="app">
 
         <div ng-controller="main">
 
-            <p>This is a very rudimentary slicks'n'slide clone type of a car game.</p>
-
-            <div style="display: inline-block;margin-right:5px;width: 30%;vertical-align: top">
+            <div style="display: inline-block;margin-right:5px;width: 20%;vertical-align: top">
                 <div>
-                    <input type="button" value="Add local car" ng-show="cars.length === 0" ng-click="addLocalCar()" />
-                    <input type="button" value="Join multiplayer" ng-show="!multiplayerFull" ng-click="joinMultiplayer()" />
-                    <input type="button" value="Spectate multiplayer" ng-click="spectateMultiplayer()" />
-                    <label for="numberOfLaps">Number of laps</label>
-                    <input id="numberOfLaps" type="number" ng-change="numberOfLapsChanged()" ng-model="numberOfLaps" />
-                    <label for="fuelConsumption">Is fuel consumption on:</label>
-                    <input id="fuelConsumption" type="checkbox" ng-model="isFuelConsumed" />
+                    <input type="button" value="Start the game" ng-click="startGame()" />
                 </div>
                 <br />
-                <div id="carControls" ng-repeat="car in allCars = cars.concat(remoteCars) track by car.name">
-                    <div style="display: inline-block;width: 40%;vertical-align: top">
-                        <p>{{car.name}} - number {{car.carNumber}}</p>
-                        <p ng-show="car.isRemote">Remote car</p>
-                        <speedometer ng-show="true"></speedometer>
-                        <steering ng-show="!car.isRemote"></steering>
-                        <gearbox ng-show="!car.isRemote"></gearbox>
-                    </div>
-                    <fueltank ng-show="!car.isRemote" style="display: inline-block; width: 10%;vertical-align: bottom"></fueltank>
-                    <powermeter ng-show="!car.isRemote" style="display: inline-block;width: 20%;vertical-align: bottom"></powermeter>
-                    <lapcount style="display: inline-block;width: 30%;vertical-align: top" carname="car.name" isremote="car.isRemote"></lapcount>
-                </div>
             </div>
 
-            <svg width="800" height="600" transform="scale ( 1.2 )">
-                <ng-track ng-cloak id="track" style="border: 5px solid;"></ng-track>
-                <pit></pit>
-                <car movingobject ng-repeat="car in cars"></car>
-                <remotecar moveremotely ng-repeat="car in remoteCars track by car.name"></remotecar>
-                <startlights x="200" y="130" transform="scale ( 0.8 )"></startlights>
+            <svg width="800" height="800">
+                <rect class="space" id="svg_1" height="800" width="800" y="0" x="0" stroke-width="5" stroke="#000000" fill="#210709"/>
+                <asteroid ng-repeat="asteroid in asteroids"></asteroid>
+                <spaceshuttle ng-repeat="spaceshuttle in spaceshuttles"></spaceshuttle>
             </svg>
         </div>
     </body>
