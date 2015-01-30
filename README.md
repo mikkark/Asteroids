@@ -1,1 +1,10 @@
-An Asteroids clone, created for the company Angular hackathon (I need a head-start :).
+An Asteroids clone.
+
+---
+
+To install:
+1) npm install
+
+(that should do bower install as well, if not, do it manually)
+
+2) node server

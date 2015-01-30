@@ -4,32 +4,19 @@
  */
 app.factory('eventBroadcast', function ($rootScope) {
 
-    var CAR_STOPS = "car_stops";
-    var carStops = function (car) {
-        $rootScope.$broadcast(CAR_STOPS, car);
+    var GAME_TICK = "gameTick";
+    var gameTick = function () {
+        $rootScope.$broadcast(GAME_TICK);
     };
 
-    var onCarStops = function ($scope, handler) {
-        $scope.$on(CAR_STOPS, function (event, message) {
-            handler(message);
-        });
-    };
-
-    var CAR_MOVED = "car_moved";
-    var carMoved = function (data) {
-        $rootScope.$broadcast(CAR_MOVED, data);
-    };
-
-    var onCarMoved = function ($scope, handler) {
-        $scope.$on(CAR_MOVED, function (event, message) {
+    var onGameTick = function ($scope, handler) {
+        $scope.$on(GAME_TICK, function (event, message) {
             handler(message);
         });
     };
 
     return {
-        carStops: carStops,
-        onCarStops: onCarStops,
-        carMoved: carMoved,
-        oncarMoved: onCarMoved
+        gameTick: gameTick,
+        onGameTick: onGameTick
     };
 });

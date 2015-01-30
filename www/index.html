@@ -1,53 +1,72 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>An asteroids clone</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="css/normalize.css">
-        <link rel="stylesheet" href="css/main.css">
-        <script src="js/vendor/jquery-1.10.2.min.js"></script>
-        <script src="js/vendor/modernizr-2.6.2.min.js"></script>
-        <script src="rxjs/dist/rx.all.js"></script>
-        <script src="angular/angular.js"></script>
-        <script src="angular-rx/dist/rx.angular.js"></script>
-        <script type="text/javascript">
-            ($(function() {
-            }));
-        </script>
-        <script type="text/javascript">
+<!--[if lt IE 7]>
+<html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>
+<html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>
+<html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" xmlns="http://www.w3.org/1999/html"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>An asteroids clone</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/main.css">
+    <script src="js/vendor/jquery-1.10.2.min.js"></script>
+    <script src="js/vendor/modernizr-2.6.2.min.js"></script>
+    <script src="rxjs/dist/rx.all.js"></script>
+    <script src="angular/angular.js"></script>
+    <script src="angular-rx/dist/rx.angular.js"></script>
+    <script type="text/javascript">
+        ($(function () {
+        }));
+    </script>
+    <script type="text/javascript">
 
-            var htmlLoaded = function () { };
+        var htmlLoaded = function () {
+        };
 
-        </script>
-        <script src="js/model.js"></script>
-        <script src="js/app.js"></script>
-        <script src="js/services.js"></script>
-        <script src="js/helpers.js"></script>
-        <script src="js/controllers.js"></script>
-        <script src="js/directives.js"></script>
-    </head>
-    <body ng-app="app">
+    </script>
+    <script src="js/model.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/services.js"></script>
+    <script src="js/helpers.js"></script>
+    <script src="js/controllers.js"></script>
+    <script src="js/directives.js"></script>
+</head>
+<body ng-app="app">
 
-        <div ng-controller="main">
+<div ng-controller="main">
 
-            <div style="display: inline-block;margin-right:5px;width: 20%;vertical-align: top">
-                <div>
-                    <input type="button" value="Start the game" ng-click="startGame()" />
-                </div>
-                <br />
-            </div>
-
-            <svg width="800" height="800">
-                <rect class="space" id="svg_1" height="800" width="800" y="0" x="0" stroke-width="5" stroke="#000000" fill="#210709"/>
-                <asteroid ng-repeat="asteroid in asteroids"></asteroid>
-                <spaceshuttle ng-repeat="spaceshuttle in spaceshuttles"></spaceshuttle>
-            </svg>
+    <div style="display: inline-block;margin-right:5px;width: 20%;vertical-align: top">
+        <div>
+            <input type="button" value="Start the game" ng-click="startGame()"/>
         </div>
-    </body>
+        <br/>
+
+        <div id="gamedata" style="display: inline-block;width: 40%;vertical-align: top">
+            <label>Missiles</label>
+            <div id="missiles" ng-repeat="missile in missiles">
+                <p>{{missile.xPos}} - {{missile.yPos}}</p>
+            </div>
+            </br>
+            <label>Asteroids</label>
+            <div id="asteroids" ng-repeat="asteroid in asteroids">
+                <p>{{asteroid.xPos}} - {{asteroid.yPos}}</p>
+            </div>
+        </div>
+    </div>
+
+    <svg width="800" height="800">
+        <rect class="space" id="svg_1" height="800" width="800" y="0" x="0" stroke-width="5" stroke="#000000"
+              fill="#210709"/>
+        <asteroid ng-repeat="asteroid in asteroids"></asteroid>
+        <spaceshuttle></spaceshuttle>
+        <missile ng-repeat="missile in missiles"></missile>
+    </svg>
+</div>
+</body>
 </html>
